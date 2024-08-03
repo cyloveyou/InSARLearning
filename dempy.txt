@@ -1,0 +1,17 @@
+这个脚本 dem.py 是一个用于处理数字高程模型（DEM）数据的工具，它提供了多种操作选项，包括拼接（stitch）和下载（download）DEM数据，以及应用地理坐标系转换、生成元数据、填充缺失值等功能。下面是对主要参数的解释：
+
+-h, --help：显示帮助信息并退出。
+-a ACTION, --action ACTION：指定操作类型，可以是 stitch（拼接）或 download（下载），默认为 stitch。
+-c, --correct：应用EGM96到WGS84的地理坐标系转换（默认不应用）。注意，输出元数据将只以xml格式提供。
+-m META, --meta META：指定生成的元数据文件类型，可以是 xml 或 rsc，默认为 xml。
+-s SOURCE, --source SOURCE：指定SRTM DEM数据的来源，可以是 1 或 3，默认为 1。
+-f, --filling：标记用于指示是否用空值填充缺失的DEM数据（默认空值为 -32768）。可以使用 -v 或 --filling_value 选项来改变这个默认值。
+-v FILLINGVALUE, --filling_value FILLINGVALUE：用于填充缺失DEM数据的值，默认为 -32768。
+-b BBOX [BBOX ...], --bbox BBOX [BBOX ...]：定义空间区域，格式为 south north west east。纬度值应为 (-90,90) 范围内的整数，经度值应为 (0,360) 或 (-180,180) 范围内的整数。
+-p PAIRS [PAIRS ...], --pairs PAIRS [PAIRS ...]：当 --action = download 时，用于指定要下载的纬度和经度对。这些值也应在相应的经纬度范围内。
+-k, --keep：如果指定此选项，则保留用于拼接的单个文件。如果同时指定了 -l 或 --local，则此选项将自动设置。
+-r, --report：如果指定此选项，则打印成功和失败的下载信息。
+-l, --local：如果指定此选项，则使用 --dir 指定位置的文件。如果不指定，--dir 指示文件存储的目录。
+注意，由于文本被截断，-d DIR, --dir DIR（指定工作目录）和 -o OUTPUT, --output OUTPUT（指定输出文件）等参数的具体说明未给出，但通常这些选项用于指定脚本操作的工作目录和输出文件的路径。
+
+这个脚本为处理DEM数据提供了灵活的工具，允许用户根据需要进行数据的下载、拼接、转换和元数据的生成。
